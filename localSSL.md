@@ -4,10 +4,10 @@
 
 Although this guide was meant to be used as a guideline to have a full-working SSL environment for py4web development under VSCode, this could also be used for any kind of local web development that requires SSL.
 
-This document targets Linux OS (Pop!_OS), which should work on any ubuntu-related systems, for other flavors of Linux, or for Windows, your mileage may vary.
+This document targets Linux OS (Specifically Pop!_OS), which should work on any ubuntu-related systems, for other flavors of Linux, or for Windows, your mileage may vary.
 
 ### User Story
-I need to do local development using SSL, for this example, I will use a custom dev domain based on my main domain which is `techfuel.net`, we'll cll this new domain <code><b>dev</b>.techfuel.net</code>. I then procees to add the DEV domain to my `/etc/hosts` file, and specified `127.0.0.1` as the IP address for localhost.
+I need to do local development using SSL, for this example, I will use a custom dev domain based on my main domain which is `techfuel.net`, we'll call this new domain <code><b>dev</b>.techfuel.net</code>. I then procees to add the DEV domain to my `/etc/hosts` file, and specified `127.0.0.1` as the IP address for localhost.
 
 ### Initial Setup
 Create a folder to contain all the files that this guide will create, open Terminal and change to the newly created folder.
@@ -98,7 +98,7 @@ Edit (or create) VSCode's own `launch.json` file, and add the following:
     "configurations": [
         {
             "name": "Python: py4web Dev Service",
-            "type": "python",
+            "type": "debugpy",
             "request": "launch",
             "program": "py4web-start.py",
             "args": [
@@ -106,6 +106,8 @@ Edit (or create) VSCode's own `launch.json` file, and add the following:
                 "apps",
                 "--host",
                 "dev.techfuel.net",
+                "port",
+                "8443",
                 "--ssl_cert",
                 "dev.techfuel.net.crt",
                 "--ssl_key",
